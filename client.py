@@ -6,9 +6,10 @@ import sys
 import json
 import RPi.GPIO as GPIO # GPIO PIN CONTROLLER
 
-host, port = 'localhost', '8888'
-listen_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-listen_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+tick = 10 # seconds for waiting for next request
+
+inet_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+inet_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
 #function for gathering sensor 
 def ErrorHandler(errortype, error):
@@ -19,20 +20,32 @@ def ErrorHandler(errortype, error):
 		logging.debug(errortype + ': ' + error)
 	return
 
+class SensorGatherer:
+	def __init__(self):
+
+	def send((host,address),CMD,DATA):
+		
+
+		
 def main():
 	#try WAS THIS THE FIRST TIME ALIVE OR A REBOOT?
 	# if first time on > Input settings > write to the config
 	try:
-		CONFIG = open('clientconfig.ini', 'r')
+		CONFIG = open('client_config.ini', 'r')
 		try:
 			json.dump(CONFIG, CONFIG, *, sort_keys=False,)
 		except:
-			pass #YOUR UNSCRUBBED DATA PASSES FOR NOW!!!! SOON CODE WILL SCRUB YOU
+			pass 
+		#YOUR UNSCRUBBED DATA PASSES!! SOON CODE WILL SCRUB YOU
 		CONFIG.close()
+		CONFIG 
 	except FileNotFoundError:
 		ErrorHandler('warn', 'CONFIG.INI:No config file found at boot.')
+		continue
 	#future resilience: try: do we have internet?
-	#future resilience: try: do we have a connection to mysql?  		
+	#future resilience: try: do we have a connection to mysql?  
+	while True:
+		server_connection, server_address = 
 	if controllerupdate = true:
 		GPIO.setmode(GPIO.BCM)
 		GPIO.setup(2, GPIO.OUT) 
